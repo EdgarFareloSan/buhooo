@@ -17,7 +17,7 @@
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress" />
@@ -25,7 +25,7 @@
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword" />
@@ -38,17 +38,10 @@
             android:text="Acceder" />
 
         <Button
-            android:id="@+id/signUpButtonP"
+            android:id="@+id/SignUpbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Registrarme" />
-
-        <Button
-            android:id="@+id/bussinesSignUpbutton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registrar mi negocio" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

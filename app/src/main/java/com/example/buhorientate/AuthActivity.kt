@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_authentification.*
-import kotlinx.android.synthetic.main.activity_authentification.signUpButtonP
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +26,7 @@ class AuthActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString()?:"",
                     passwordEditText.text.toString()?:"").addOnCompleteListener {
                         if (it.isSuccessful){
-                            startActivity(Intent(this, BussinesHome::class.java))
+                            startActivity(Intent(this, Homeactivity::class.java))
                         }else{
                             showAlert("Error al iniciar sesion")
                         }
@@ -35,12 +34,10 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
-        bussinesSignUpbutton.setOnClickListener{
-            startActivity(Intent(this, BussinesSignUp::class.java))
+        SignUpbutton.setOnClickListener{
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
-        signUpButtonP.setOnClickListener{
-            startActivity(Intent(this, PersonalSignUp::class.java))
-        }
+
     }
 
 
