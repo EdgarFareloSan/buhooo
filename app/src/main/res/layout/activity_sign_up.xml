@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Nombre"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/editTextPhoneB"
@@ -31,7 +33,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Numero celular"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <EditText
             android:id="@+id/editTextEmailAddressB"
@@ -39,7 +43,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Correo Electronico"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <EditText
             android:id="@+id/editTextPasswordB"
@@ -47,7 +53,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextConfirmPasswordB"
@@ -55,7 +62,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Confirme su contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <Button
             android:id="@+id/signUpButtonB"
