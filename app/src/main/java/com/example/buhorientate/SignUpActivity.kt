@@ -15,34 +15,40 @@ class SignUpActivity : AppCompatActivity() {
         setup()
     }
 
-    private fun setup(){
-        title = "Registro proveedor"
+    private fun setup() {
+        title = "Registro"
 
-        signUpButtonB.setOnClickListener{
-            if (editTextPasswordB.text.toString().equals(editTextConfirmPasswordB.text.toString())) {
+        signUpButtonB.setOnClickListener {
+            if (editTextPasswordB.text.toString()
+                    .equals(editTextConfirmPasswordB.text.toString())
+            ) {
                 if (editTextEmailAddressB.text.isNotEmpty() && editTextPersonName.text.isNotEmpty() &&
+
                     editTextPhoneB.text.isNotEmpty() &&
                     editTextPasswordB.text.isNotEmpty() && editTextConfirmPasswordB.text.isNotEmpty()
-                ){
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(editTextEmailAddressB.text.toString(),
-                        editTextPasswordB.text.toString()).addOnCompleteListener {
+                ) {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                        editTextEmailAddressB.text.toString(),
+                        editTextPasswordB.text.toString()
+                    ).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            startActivity(Intent(this, Homeactivity::class.java))
+                            showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
                         } else {
-                            showAlert("Error al registrar su negocio")
+                            showAlert("Error al registrarse")
                         }
                     }
-                }else{
+                } else {
                     showAlert("Por favor ingrese todos los datos")
                 }
-            }else{
+            } else {
                 showAlert("Las contraseñas no coinciden")
             }
         }
 
 
     }
-    fun showAlert(errorType:String) {
+
+    fun showAlert(errorType: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
         builder.setMessage(errorType)
@@ -51,4 +57,11 @@ class SignUpActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    fun showHome(email: String, provider: ProviderType) {
+        val homeIntent: Intent = Intent(this, Homeactivity::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
+    }
 }

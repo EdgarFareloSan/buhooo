@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Buhorientate</string>
+    <string name="prefs_file">com.example.buhorientate.PREFERENCE.FILE.KEY</string>
 </resources>
