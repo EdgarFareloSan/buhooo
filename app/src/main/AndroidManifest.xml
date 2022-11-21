@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buhorientate"
         tools:targetApi="31">
-
+        <activity
+            android:name=".CreatePostActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Homeactivity"
             android:exported="false">
@@ -20,7 +26,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SignUpActivity"
             android:exported="false">

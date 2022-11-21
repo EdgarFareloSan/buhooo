@@ -1,16 +1,23 @@
 package com.example.buhorientate
 import android.app.Activity
+import android.app.MediaRouteButton
 import android.content.Intent
+import android.graphics.Color
 import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.card_post.view.*
 
 class PostAdapter(private val activity: Activity, private val dataset: List<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>(){
     class ViewHolder(val layout: View) : RecyclerView.ViewHolder(layout)
-
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.card_post, parent, false)
         return ViewHolder(layout)
@@ -20,9 +27,27 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = dataset[position]
-
+        val likes= post.likes!!.toMutableList()
+        var liked= likes.contains(auth.uid)
+        holder.layout.likesCount.text = "${likes.size} Me gusta"
         holder.layout.NameBussines.text =post.ServiceName
         holder.layout.Especificaciones.text = post.post
+        setColor(liked, holder.layout.likebtn)
+
+        holder.layout.likebtn.setOnClickListener {
+            liked = !liked
+            setColor(liked, holder.layout.likebtn)
+
+            if(liked) likes.add(auth.uid!!)
+            else likes.remove(auth.uid)
+
+            val doc = db.collection("posts").document(post.uid!!)
+
+            db.runTransaction {
+                it.update(doc,  "likes", likes)
+                null
+            }
+        }
 
         holder.layout.sharebtn.setOnClickListener {
             val sendIntent= Intent().apply {
@@ -33,5 +58,9 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
             val shareIntent = Intent.createChooser(sendIntent, null)
             activity.startActivity(shareIntent)
         }
+    }
+    private fun setColor(liked: Boolean, likeButton: Button){
+        if (liked) likeButton.setTextColor(ContextCompat.getColor(activity,R.color.purple_700))
+
     }
 }

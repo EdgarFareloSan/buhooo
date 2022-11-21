@@ -28,18 +28,19 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:text="especificaciones"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameBussines" />
 
             <TextView
                 android:id="@+id/NameBussines"
-                android:layout_width="76dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
                 android:layout_marginTop="4dp"
                 android:text="Servicio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,6 +70,16 @@
                 app:layout_constraintEnd_toStartOf="@+id/sharebtn"
                 app:layout_constraintTop_toBottomOf="@+id/Especificaciones"
                 app:strokeColor="#000000" />
+
+            <TextView
+                android:id="@+id/likesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="0 likes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
