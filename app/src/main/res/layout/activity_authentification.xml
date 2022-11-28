@@ -8,10 +8,10 @@
 
     <LinearLayout
         android:id="@+id/authLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,19 +22,19 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:autofillHints="" />
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/contrase_a"
-            android:inputType="textPassword"
-            android:autofillHints="" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/signInButton"
@@ -48,12 +48,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/registrarme" />
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googleButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_gravity="end"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="50dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
