@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.card_post.view.*
+import java.text.SimpleDateFormat
 
 class PostAdapter(private val activity: Activity, private val dataset: List<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>(){
     class ViewHolder(val layout: View) : RecyclerView.ViewHolder(layout)
@@ -29,9 +30,13 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
         val likes= post.likes!!.toMutableList()
         var liked= likes.contains(auth.uid)
         holder.layout.likesCount.text = "${likes.size} Me gusta"
-        holder.layout.NameBussines.text =post.ServiceName
+        holder.layout.NameBussines.text = post.ServiceName
         holder.layout.Especificaciones.text = post.post
         setColor(liked, holder.layout.likebtn)
+
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm a")
+
+        holder.layout.fechaTextView.text = sdf.format(post.date)
 
         holder.layout.likebtn.setOnClickListener {
             liked = !liked

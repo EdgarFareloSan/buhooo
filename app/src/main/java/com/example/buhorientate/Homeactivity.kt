@@ -62,15 +62,14 @@ class Homeactivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
-        return when (item.itemId) {
+        return when(item.itemId) {
             R.id.cerrarSesion -> {
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, AuthActivity::class.java)
-                startActivity(intent)
+                finish()
                 true
             }
 
-            else -> super.onOptionsItemSelected(item)
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 
