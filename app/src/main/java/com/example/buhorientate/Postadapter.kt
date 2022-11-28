@@ -30,7 +30,7 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
         val likes= post.likes!!.toMutableList()
         var liked= likes.contains(auth.uid)
         holder.layout.likesCount.text = "${likes.size} Me gusta"
-        holder.layout.NameBussines.text = post.ServiceName
+        holder.layout.NameBussines.text = post.serviceName
         holder.layout.Especificaciones.text = post.post
         setColor(liked, holder.layout.likebtn)
 
