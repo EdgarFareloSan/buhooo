@@ -19,8 +19,7 @@ class SignUpActivity : AppCompatActivity() {
         title = "Registro"
 
         signUpButtonB.setOnClickListener {
-            if (editTextPasswordB.text.toString()
-                    .equals(editTextConfirmPasswordB.text.toString())
+            if (editTextPasswordB.text.toString() == editTextConfirmPasswordB.text.toString()
             ) {
                 if (editTextEmailAddressB.text.isNotEmpty() && editTextPersonName.text.isNotEmpty() &&
 
@@ -48,7 +47,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    fun showAlert(errorType: String) {
+    private fun showAlert(errorType: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
         builder.setMessage(errorType)
@@ -57,7 +56,7 @@ class SignUpActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun showHome(email: String, provider: ProviderType) {
+    private fun showHome(email: String, provider: ProviderType) {
         val homeIntent: Intent = Intent(this, Homeactivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)

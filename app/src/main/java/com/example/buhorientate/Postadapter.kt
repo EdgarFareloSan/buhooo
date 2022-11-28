@@ -1,9 +1,7 @@
 package com.example.buhorientate
+import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.MediaRouteButton
 import android.content.Intent
-import android.graphics.Color
-import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +23,7 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
 
     override fun getItemCount()= dataset.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = dataset[position]
         val likes= post.likes!!.toMutableList()

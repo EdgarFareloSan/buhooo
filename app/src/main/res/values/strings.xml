@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Buhorientate</string>
+    <string name="web_client_id">1068662777607-or1t3k6eaqu8q641jqsh61ntov5rsuh8.apps.googleusercontent.com</string>
     <string name="prefs_file">com.example.buhorientate.PREFERENCE.FILE.KEY</string>
+    <string name="email">Email</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="acceder">Acceder</string>
+    <string name="registrarme">Registrarme</string>
 </resources>
