@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
@@ -22,15 +23,13 @@ class SignUpActivity : AppCompatActivity() {
             if (editTextPasswordB.text.toString() == editTextConfirmPasswordB.text.toString()
             ) {
                 if (editTextEmailAddressB.text.isNotEmpty() && editTextPersonName.text.isNotEmpty() &&
-
-                    editTextPhoneB.text.isNotEmpty() &&
-                    editTextPasswordB.text.isNotEmpty() && editTextConfirmPasswordB.text.isNotEmpty()
-                ) {
+                    editTextPasswordB.text.isNotEmpty() && editTextConfirmPasswordB.text.isNotEmpty()) {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         editTextEmailAddressB.text.toString(),
                         editTextPasswordB.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful) {
+
                             showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
                         } else {
                             showAlert("Error al registrarse")

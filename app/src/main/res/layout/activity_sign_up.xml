@@ -28,16 +28,6 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/editTextPhoneB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Numero celular"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textColorHint="#757575" />
-
-        <EditText
             android:id="@+id/editTextEmailAddressB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

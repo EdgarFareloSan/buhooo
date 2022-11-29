@@ -1,6 +1,8 @@
 package com.example.buhorientate
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -62,9 +64,23 @@ class PostAdapter(private val activity: Activity, private val dataset: List<Post
             val shareIntent = Intent.createChooser(sendIntent, null)
             activity.startActivity(shareIntent)
         }
+
+        if(auth.uid == post.userName) {
+            holder.layout.setOnLongClickListener {
+                AlertDialog.Builder(activity).apply {
+                    setTitle("Borrar post")
+                    setMessage("El post será borrado permanentementa. ¿Esta seguro?")
+                    setPositiveButton("Si") { dialogInterFace: DialogInterface, i: Int ->
+                        db.collection("posts").document(post.uid!!).delete()
+                    }
+                    setNegativeButton("No", null)
+                }.show()
+                return@setOnLongClickListener true
+            }
+        }
     }
+
     private fun setColor(liked: Boolean, likeButton: Button){
         if (liked) likeButton.setTextColor(ContextCompat.getColor(activity,R.color.purple_700))
-
     }
 }
